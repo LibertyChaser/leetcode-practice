@@ -116,3 +116,44 @@ class Solution:
         if num == 1 or num == 4:
             return True
 ```
+
+## Remove Element
+
+[27. Remove Element](https://leetcode.com/problems/remove-element/)
+
+### 双指针法
+
+```python
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        fast = 0
+        slow = 0
+        size = len(nums)
+        while fast < size:
+            # slow 用来收集不等于 val 的值，
+            # 如果 fast 对应值不等于 val，则把它与 slow 替换
+            if nums[fast] != val:
+                nums[slow] = nums[fast]
+                slow += 1
+            fast += 1
+        return slow
+```
+
+[26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
