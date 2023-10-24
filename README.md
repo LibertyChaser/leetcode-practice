@@ -3,6 +3,8 @@ This repository contains my solutions to various algorithmic problems from LeetC
 
 # Array
 
+## Binary Search
+
 [704. Binary Search](https://leetcode.com/problems/binary-search/)
 
 Given an array of integers `nums` which is sorted in ==ascending order==, and an integer `target`, write a function to search `target` in `nums`. If `target` exists, then return its index. Otherwise, return `-1`.
@@ -98,7 +100,14 @@ class Solution:
 
 [69. Sqrt(x)](https://leetcode.com/problems/sqrtx/)
 
+```python
+        if (x < 1000000):
+            for i in range(1000):
+                if i * i <= x and (i + 1) * (i + 1) > x:
+                    return i
+```
 
+但通解最好别用这个。
 
 [367. Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/)
 
@@ -107,64 +116,3 @@ class Solution:
         if num == 1 or num == 4:
             return True
 ```
-
-
-
-```python
-Class Solution:
-    def searchRange(self, nums: List[int], target: int) -> List[int]:
-        if (len(nums) == 0):
-            return [-1, -1]
-        left, right = 0, len(nums)
-
-        while (left < right):
-            middle = left + (right - left) // 2
-            if (nums[middle] > target):
-                right = middle
-            elif(nums[middle] < target):
-                left = middle + 1
-            else:
-                break;
-
-        if (left >= right):
-            return [-1, -1]
-
-        pre_middle = middle
-        pre_left = left
-        pre_right = right
-
-        if (nums[0] == target):
-            left_ind = 0
-        else:
-            left, right = pre_left, pre_middle
-            while (left <= right):
-                if (nums[left] == target and nums[left - 1] != target):
-                    break
-                middle = left + (right - left) // 2
-                if (nums[middle] < target):
-                    left = middle
-                else:
-                    right = middle
-
-            left_ind = left
-
-        if (nums[-1] == target):
-            right_ind = len(nums)
-        else:
-            left, right = pre_middle, pre_right
-            while (left <= right):
-                if (nums[left] == target and nums[left + 1] != target):
-                    break
-                middle = left + (right - left) // 2
-                if (nums[middle] > target):
-                    right = middle
-                else:
-                    left = middle
-            
-            right_ind = left
-
-        return [left_ind, right_ind]
-```
-
-
-
