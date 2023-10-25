@@ -141,9 +141,24 @@ class Solution:
 
 [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
+差序对比
+
+```python
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        slow = 0
+        fast = 1
+        while (fast < len(nums)):
+            if (nums[fast] != nums[slow]):
+                slow += 1
+                nums[slow] = nums[fast]
+            fast += 1
+        return slow + 1
+```
 
 
 
+[283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
 
 
 
