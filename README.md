@@ -172,9 +172,47 @@ class Solution:
             nums[i] = 0
 ```
 
+[844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)
 
+```python
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        def newString(str):
+            fast = 0
+            result = []
+            while (fast < len(str)):
+                if (str[fast] == '#'):
+                    result = result[:-1]
+                else:
+                    result += [str[fast]]
+                fast += 1
+            return result
+        return newString(s) == newString(t)
+      
+```
 
+## Squares of a Sorted Array
 
+[977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
+
+因为最后排序的是平方 所以前后俩指针
+
+```python
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        front = 0
+        back = len(nums) - 1
+        result = []
+        while (front <= back):
+            if (nums[front] ** 2 < nums[back] ** 2):
+                result += [nums[back] ** 2]
+                back -= 1
+            else:
+                result += [nums[front] ** 2]
+                front += 1
+            
+        return result[::-1]
+```
 
 
 
